@@ -703,6 +703,14 @@
         { merge: true }
       );
     },
+    // 🆕 한 사람 한 기기(기관사) - 지금 로그인해서 쓰는 기기 번호를 승인 기록에 적어둬요
+    async setActiveDevice(id, deviceId) {
+      await setDoc(
+        doc(db, APPROVAL_COLLECTION, id),
+        { activeDevice: deviceId, activeDeviceAt: serverTimestamp() },
+        { merge: true }
+      );
+    },
     async getPinHash(id) {
       const snap = await getDoc(doc(db, APPROVAL_COLLECTION, id));
       return snap.exists() ? snap.data().pinHash || null : null;
@@ -718,7 +726,7 @@
 <!-- 테스트 모드 스위치: 실사용 전환 시 false로만 바꾸면 돼요 -->
 <script>window.APP_TEST_MODE = true;</script>
 
-<script src="app.js?v=20261128my3"></script>
+<script src="app.js?v=20261127my1"></script>
 
 <script>
   if ("serviceWorker" in navigator) {
