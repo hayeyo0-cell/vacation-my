@@ -8268,7 +8268,8 @@ function HyuchungdangAdminPanel({
   };
 
   // 운용이 "확정 취소" - 신청 자체는 그대로 두고, 충당교번/확인만 다시 빈 상태로 되돌려요.
-  // (막판  // 여전히 "신청중"으로 그대로 보여요.)
+  // (막판 사정 변경 대응용. 신청을 취소하는 게 아니라서 기관사 본인 목록엔 아무 변화 없어요 -
+  // 여전히 "신청중"으로 그대로 보여요.)
   const handleCancelByAdmin = r => {
     if (!confirm(`${r.name}님의 ${r.date} 휴충당 확정을 취소할까요? (신청 자체는 유지돼요)`)) return;
     patchRequest(r, {
@@ -9986,4 +9987,3 @@ ReactDOM.createRoot(document.getElementById("root")).render(/*#__PURE__*/React.c
   onClose: () => window.location.reload(),
   closeLabel: "새로고침"
 }, /*#__PURE__*/React.createElement(App, null)));
- 사정 변경 대응용. 신청을 취소하는 게 아니라서 기관사 본인 목록엔 아무 변화 없어요 -
